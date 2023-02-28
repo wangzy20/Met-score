@@ -34,17 +34,6 @@ library(tidydr)
 x <- dr(data = expr, fun = prcomp)
 autoplot(x)
 
-
-#boxplot for average
-mean_expr <-  apply(expr, 2, mean)
-boxplot(mean_expr,digit = 2)
-
-names_abu <- mean_expr[mean_expr >10000000]
-names_unabu <- mean_expr[mean_expr <100000]
-
-write.table(names_abu,"high_abundant_complex.txt")
-write.table(names_unabu,"low_abundant_complex.txt")
-
 #scale
 expr=apply(expr, 2,scale) %>% data.frame
 rownames(expr) <- rownames(phe)
